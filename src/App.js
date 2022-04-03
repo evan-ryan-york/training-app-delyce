@@ -1,13 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import LoginContainer from "./components/LoginContainer";
+import TaskContainer from "./components/TaskContainer"
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(()=>{
+    const loggedIn = localStorage.getItem("isLoggedIn")
+    if(loggedIn){
+      setIsLoggedIn(true);
+    }else{
+      setIsLoggedIn(false)
+    }
+  },[])
 
   return (
-    <div>
-      <h1>Title</h1>
-      <p>Paragraph text</p>
-    </div>
+    <>
+    {isLoggedIn ? (<TaskContainer setIsLoggedIn={setIsLoggedIn} />) : (<LoginContainer setIsLoggedIn={setIsLoggedIn} />)}
+    </>
+    
   );
 }
 
