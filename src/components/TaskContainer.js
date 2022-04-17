@@ -4,9 +4,11 @@ import NewTask from "./NewTask";
 import TaskList from "./TaskList";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import {useAppContext} from "../contexts/AppContext"
 
 export default function TaskContainer(props) {
   const [tasks, setTasks] = useState();
+  const {submitTrigger} = useAppContext();
 
   useEffect(() => {
     const getTasks = async () => {
@@ -16,16 +18,17 @@ export default function TaskContainer(props) {
       snapshot.forEach((task) => {
         tempArray.push({ id: task.id, ...task.data() });
       });
-      console.log(tempArray);
       setTasks(tempArray);
     };
     getTasks();
-  }, []);
+  }, [submitTrigger]);
 
   return (
     <>
-      <Navbar setIsLoggedIn={props.setIsLoggedIn} />
+      <Navbar />
+
       <div className="tasks-container">
+        <h1>Manage To Dos</h1>
         <NewTask />
         <TaskList tasks={tasks} />
       </div>

@@ -1,9 +1,11 @@
 import React from "react";
+import { useAppContext } from "../contexts/AppContext";
 
-export default function Navbar(props) {
-    
+export default function Navbar() {
+  const { setIsLoggedIn } = useAppContext();
+
   const handleLogout = () => {
-    props.setIsLoggedIn(false);
+    setIsLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
   };
 
