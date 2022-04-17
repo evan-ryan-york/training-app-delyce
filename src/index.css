@@ -32,6 +32,10 @@ code {
   color: #333;
 }
 
+.menu-item{
+  color: white;
+}
+
 .input-field{
   width: calc(100% - 20px);
   padding: 10px;

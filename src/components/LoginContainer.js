@@ -9,7 +9,7 @@ const LoginContainer = (props) => {
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
-  const { setIsLoggedIn } = useAppContext();
+  const { setIsLoggedIn, signInWithGoogle } = useAppContext();
 
   const setFormValidation = () => {
     if (emailIsValid && passwordIsValid) {
@@ -48,8 +48,9 @@ const LoginContainer = (props) => {
         setValid={setPasswordIsValid}
       />
       <SubmitButton handleClick={handleSubmit} isValid={formIsValid} label={"Log In"} />
+      <SubmitButton handleClick={signInWithGoogle} isValid={true} label={"Log In With Google"} />
     </div>
   );
 };
-
+//It's not letting me chat for some reason... hold on
 export default LoginContainer;
