@@ -185,3 +185,13 @@ nav > button:hover {
 .tasks-container{
   padding: 15px;
 }
+
+.NavLink{
+  color: #fff;
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #fff;
+ }
+ 

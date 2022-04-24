@@ -3,12 +3,20 @@ import Navbar from "./Navbar";
 import NewTask from "./NewTask";
 import TaskList from "./TaskList";
 import { db } from "../firebase";
+import {useNavigate} from "react-router-dom"
 import { collection, getDocs } from "firebase/firestore";
 import {useAppContext} from "../contexts/AppContext"
 
 export default function TaskContainer(props) {
   const [tasks, setTasks] = useState();
-  const {submitTrigger} = useAppContext();
+  const {submitTrigger, isLoggedIn} = useAppContext();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(isLoggedIn === false){
+      navigate("/login")
+    }
+  },[isLoggedIn])
 
   useEffect(() => {
     const getTasks = async () => {

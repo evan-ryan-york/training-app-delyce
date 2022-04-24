@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Textfield from "./Textfield";
+import {useNavigate} from "react-router-dom"
 import SubmitButton from "./SubmitButton";
 import { useAppContext } from "../contexts/AppContext";
 
@@ -9,7 +10,14 @@ const LoginContainer = (props) => {
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
-  const { setIsLoggedIn, signInWithGoogle } = useAppContext();
+  const { setIsLoggedIn, signInWithGoogle, isLoggedIn } = useAppContext();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(isLoggedIn){
+      navigate("/task-container")
+    }
+  },[isLoggedIn]);
 
   const setFormValidation = () => {
     if (emailIsValid && passwordIsValid) {

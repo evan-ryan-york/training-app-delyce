@@ -46,7 +46,6 @@ export function AppContextProvider({ children }) {
   };
 
   onAuthStateChanged(auth, (user) => {
-    console.log(user);
     if (user) {
       setIsLoggedIn(true);
       setLoggedInUser(user);
