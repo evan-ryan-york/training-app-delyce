@@ -9,7 +9,7 @@ export default function ProfileContainer(){
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(isLoggedIn===false){
+        if(!loading && !isLoggedIn){
             navigate("/login")
         }
     },[isLoggedIn]);

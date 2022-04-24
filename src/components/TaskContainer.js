@@ -9,11 +9,11 @@ import {useAppContext} from "../contexts/AppContext"
 
 export default function TaskContainer(props) {
   const [tasks, setTasks] = useState();
-  const {submitTrigger, isLoggedIn} = useAppContext();
+  const {submitTrigger, isLoggedIn, loading} = useAppContext();
   const navigate = useNavigate();
 
   useEffect(()=>{
-    if(isLoggedIn === false){
+    if(!isLoggedIn && !loading){
       navigate("/login")
     }
   },[isLoggedIn])

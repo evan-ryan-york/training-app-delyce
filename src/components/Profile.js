@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import EditProfileDialog from "./EditProfileDialog";
 
 const theme = createTheme({
     palette: {
@@ -14,6 +15,12 @@ const theme = createTheme({
 })
 
 export default function Profile() {
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
   return (
     <ThemeProvider theme={theme}>
       <Paper sx={{ minWidth: 250, width: "80%", margin: "30px auto", padding: 2, textAlign: "center" }}>
@@ -28,10 +35,11 @@ export default function Profile() {
         <Typography variant="p" component="div">
           Age: 37
         </Typography>
-        <Button sx={{ mt: 2 }} color="primary" variant="outlined">
+        <Button sx={{ mt: 2 }} color="primary" variant="outlined" onClick={handleClickOpen}>
           Edit
         </Button>
       </Paper>
+      <EditProfileDialog open={open} setOpen={setOpen} />
     </ThemeProvider>
   );
 }

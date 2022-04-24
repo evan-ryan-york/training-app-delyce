@@ -18,14 +18,14 @@ export function AppContextProvider({ children }) {
   const [newTaskIsValid, setNewTaskIsValid] = useState(blankNewTaskIsValid);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loggedIn = localStorage.getItem("isLoggedIn");
-    if (loggedIn) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const loggedIn = localStorage.getItem("isLoggedIn");
+  //   if (loggedIn) {
+  //     setIsLoggedIn(true);
+  //   } else {
+  //     setIsLoggedIn(false);
+  //   }
+  // }, []);
 
   const handleSubmitClick = async () => {
     const tasksRef = collection(db, "tasks-ryan");

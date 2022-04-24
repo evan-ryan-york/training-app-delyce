@@ -10,11 +10,11 @@ const LoginContainer = (props) => {
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
-  const { setIsLoggedIn, signInWithGoogle, isLoggedIn } = useAppContext();
+  const { setIsLoggedIn, signInWithGoogle, isLoggedIn, loading } = useAppContext();
   const navigate = useNavigate();
 
   useEffect(()=>{
-    if(isLoggedIn){
+    if(isLoggedIn && !loading){
       navigate("/task-container")
     }
   },[isLoggedIn]);
